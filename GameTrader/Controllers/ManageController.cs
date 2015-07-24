@@ -11,7 +11,7 @@ using GameTrader.Models;
 namespace GameTrader.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : GameTraderBaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

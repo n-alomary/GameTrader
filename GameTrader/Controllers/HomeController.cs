@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace GameTrader.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : GameTraderBaseController
     {
         public ActionResult Index()
         {

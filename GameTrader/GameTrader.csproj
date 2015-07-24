@@ -168,11 +168,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameTraderBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507231600183_InitialCreate.cs" />
+    <Compile Include="Migrations\201507231600183_InitialCreate.Designer.cs">
+      <DependentUpon>201507231600183_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507241752053_removed username since it broke stuff and i wasnt thinking when i added it.cs" />
+    <Compile Include="Migrations\201507241752053_removed username since it broke stuff and i wasnt thinking when i added it.Designer.cs">
+      <DependentUpon>201507241752053_removed username since it broke stuff and i wasnt thinking when i added it.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -245,6 +255,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507231600183_InitialCreate.resx">
+      <DependentUpon>201507231600183_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507241752053_removed username since it broke stuff and i wasnt thinking when i added it.resx">
+      <DependentUpon>201507241752053_removed username since it broke stuff and i wasnt thinking when i added it.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

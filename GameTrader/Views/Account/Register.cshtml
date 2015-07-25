@@ -3,7 +3,79 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+
+
+
+<main class="container">
+    <h5 class="center-align">Register</h5>
+    <div class="row">
+        <div class="col s10 offset-s1 ">
+            <div class="card-panel ">
+                <span class="black-text">
+                    <div class="row">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class="col s12", role="form"}))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h2>@ViewBag.Title.</h2>
+                            <div class="row">
+                                <div class="input-field col s6">
+
+                                    <input placeholder="name here" id="first_name" type="text" class="validate">
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input placeholder="lastname here" id="last_name" type="text" class="validate">
+                                    <label for="last_name">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="username" type="text" class="validate">
+                                    <label for="username">Usesname</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="password" type="password" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="con_password" type="password" class="validate">
+                                    <label for="con_password">Confirm Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="birthdate" type="date" class="datepicker">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    <input type="checkbox" id="TandC" />
+                                    <label for="TandC">I agree to the Terms and Conditions of GameTrader</label>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                                        Submit
+                                        <i class="materials-icon">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                            }
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</main>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -27,10 +99,10 @@
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class ="form-control"})
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
-    
+
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -50,6 +122,6 @@
         </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@*@section Scripts {*@
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+@*}*@

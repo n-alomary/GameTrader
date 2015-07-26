@@ -15,14 +15,14 @@ namespace GameTrader.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome to the Game Trader site where you can buy, sell and swap your favorite games!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "How to find us.";
 
             return View();
         }

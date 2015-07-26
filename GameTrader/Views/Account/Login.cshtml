@@ -18,25 +18,26 @@
                             <div class="row">
                                 <div class="input-field s6">
                                     @Html.LabelFor(m => m.Email)
-                                    @Html.TextBoxFor(m=> m.Email)
-                                   @* @Html.ValidationMessageFor(m=> m.Email, "", new { @class= "validate"})*@
+                                    @Html.TextBoxFor(m=> m.Email, new { @class="validate"})
+                                    @*@Html.ValidationMessageFor(m=> m.Email, "")*@
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field s6">
                                     @Html.LabelFor(m => m.Password)
-                                    @Html.TextBoxFor(m => m.Password, new { type = "password"  })
+                                    @Html.TextBoxFor(m => m.Password, new { type = "password" })
+                                   @* @Html.ValidationMessageFor(m => m.Password)*@
                                 </div>
                             </div>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="input-field s6">
                                     @Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="row">
                                 <div class="center-align">
-                                    <button name="Submit" value="Login" class="btn waves-effect waves-light" type="submit" name="action">
+                                    <button name="Submit" value="Login" class="btn waves-effect waves-light" type="submit">
                                         Login
                                     </button>
                                 </div>
@@ -53,8 +54,7 @@
     </div>
 </main>
 
-@*@section Scripts {*@
-@*@Scripts.Render("~/bundles/jqueryval")*@
-@*<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>*@
-@*@Scripts.Render("~/Scripts/materialize/materialize.min.js")*@
-@*}*@
+@*@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-2.1.1.min.js")
+    @Scripts.Render("~/Scripts/materialize/materialize.min.js")
+}*@

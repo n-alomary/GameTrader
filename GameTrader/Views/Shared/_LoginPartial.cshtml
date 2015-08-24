@@ -13,6 +13,14 @@
     </ul>
     }
 }
+else if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <ul class="nav-mobile right">
+        <li>@Html.ActionLink("Hello " + ViewData.GetViewDataInfo("FullName").Value + "!!!!!!!!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+        <li>@Html.ActionLink("Admin Panel", "Index", "Admin", routeValues: null, htmlAttributes: new { id = "AdminLink" })</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+}
 else
 {
     <ul class="nav-mobile right">

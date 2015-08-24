@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - Game Trader</title>
     @Styles.Render("~/Content/materialize/css/materialize.css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
@@ -24,14 +25,14 @@
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
-                        <li>@Html.ActionLink("SellSwap", "SellSwap", "Home")</li>
+                        <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                     <ul class="side-nav" id="mobile-thing">
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
-                        <li>@Html.ActionLink("SellSwap", "SellSwap", "Home")</li>
+                        <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
                     </ul>
                 </div>
             </div>
@@ -57,19 +58,19 @@
                     <img src="img/Gamaderlogo.jpg" alt="GameTrader Logo">
                     <h5 class="teal-text">Game Trader</h5>
                     <ul>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Email</a></li>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="https://www.twitter.com/">Twitter</a></li>
+                        <li><a href="https://www.facebook.com/">Facebook</a></li>
+                        <li><a href="mailto:staff@gametrader.co.uk">Email</a></li>
+                        <li><a href="https://instagram.com/">Instagram</a></li>
                     </ul>
                 </div>
 
                 <div class="col s12 m4 12 offset-8">
                     <h5 class="white-text">Services</h5>
                     <ul>
-                        <li><a href="BuySellSwap.php">Buy</a></li>
-                        <li><a href="BuySellSwap.php">Sell</a></li>
-                        <li><a href="BuySellSwap.php">Swap</a></li>
+                        <li><a href="/Home/BuySwap">Buy</a></li>
+                        <li><a href="/Home/SellSwap">Sell</a></li>
+                        <li><a href="/Home/SellSwap">Swap</a></li>
                     </ul>
                 </div>
             </div>

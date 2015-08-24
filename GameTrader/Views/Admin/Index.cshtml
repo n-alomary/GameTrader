@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<main class="container">
+    <h4 class="center-align teal-text">Administrator Panel</h4>
+        <div class="row">
+            <form action="/Admin/upload" method="post" enctype="multipart/form-data">
+
+                <label for="photo">Photo:  </label>
+                <input class="file-path btn" type="file" name="photo" id="photo" />
+                <input class="btn" type="submit" value="Upload" />
+
+            </form>
+
+            <div class="row">
+                <form action="/Admin/upload" method="post" enctype="multipart/form-data">
+                    <div class="file-field input-field">
+                        <input class="file-path validate" name="photo" id="photo" type="text" />
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" value="Upload" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+</main>

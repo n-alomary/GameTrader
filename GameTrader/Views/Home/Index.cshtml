@@ -1,31 +1,146 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    $(document).ready(function () {
+        $('.slider').slider({
+            full_width: false,
+            interval: 5000,
+            transition: 800,
+        });
+    });
+</script>
+<main class="container">
+    <h4 class="center-align teal-text">Welcome to Game Trader!</h4>
+    <div class="row">
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="http://lorempixel.com/g/400/200/cats/1/" alt="Alternate Text" />
+                    <div class="caption center-align">
+                        <h3>Welcome To Game Trader</h3>
+                        <h5 class="light grey-text text-lighten-3">A place where you can Buy, Sell and Swap games easily!</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/g/400/200/cats/1/" alt="Alternate Text" />
+                    <div class="caption center-align">
+                        <h3>Buy Games!</h3>
+                        <h5 class="light grey-text text-lighten-3">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation
+                        </h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/g/400/200/cats/2/" alt="Alternate Text" />
+                    <div class="caption center-align">
+                        <h3>Sell Games!</h3>
+                        <h5 class="light grey-text text-lighten-3">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.
+                        </h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/g/400/200/cats/3/" alt="Alternate Text" />
+                    <div class="caption center-align">
+                        <h3>Swap Games!</h3>
+                        <h5 class="light grey-text text-lighten-3">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.
+                        </h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="row">
+        <h5 class="blue-grey-text">Recently added games:</h5>
+        <div class="col m4">
+            <div class="card hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="http://lorempixel.com/g/400/200/cats/1/">
+                </div>
+                <div class="card-content">
+                    <span class="Card-title activator grey-text text-darken-4">
+                        <b>Wii Fit</b>
+                        <i class="material-icons right">more_vert</i>
+                    </span>
+                    <div class="row">
+                        <p class="col s6">Price: £11</p>
+                        <p class="col s6">[Buy]</p>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        Wii Fit <i class="material-icons right">close</i>
+                    </span>
+                    <p>
+                        olor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui
+                    </p>
+                    <input type="submit" name="name" value="Buy" class="btn" />
+                </div>
+            </div>
+        </div>
+        <div class="col m4">
+            <div class="card hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="http://lorempixel.com/g/400/200/cats/3/">
+                </div>
+                <div class="card-content">
+                    <span class="Card-title activator grey-text text-darken-4">
+                        <b>Boxing101</b>
+                        <i class="material-icons right">more_vert</i>
+                    </span>
+                    <div class="row">
+                        <p class="col s6">Price: £1</p>
+                        <p class="col s6">[Buy]</p>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        Boxing101 <i class="material-icons right">close</i>
+                    </span>
+                    <p>
+                        olor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui
+                    </p>
+                    <input type="submit" name="name" value="Buy" class="btn" />
+                </div>
+            </div>
+        </div>
+        <div class="col m4">
+            <div class="card hoverable">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="http://lorempixel.com/g/400/200/cats/2/">
+                </div>
+                <div class="card-content">
+                    <span class="Card-title activator grey-text text-darken-4">
+                        <b>Fifa</b>
+                        <i class="material-icons right">more_vert</i>
+                    </span>
+                    <div class="row">
+                        <p class="col s6">Price: £9</p>
+                        <p class="col s6">[Buy]</p>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        Fifa <i class="material-icons right">close</i>
+                    </span>
+                    <p>
+                        olor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui
+                    </p>
+                    <input type="submit" name="name" value="Buy" class="btn" />
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</main>

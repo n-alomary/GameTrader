@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using GameTrader.DAL;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 
 namespace GameTrader.Controllers
 {
+    [TrackVisitor]
     [Authorize(Roles = "Admin, AwesomePerson")]
     public class AdminController : GameTraderBaseController
     {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameTrader.DAL;
+using GameTrader.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Web.Mvc;
 
 namespace GameTrader.Controllers
 {
+    [TrackVisitor]
     public class HomeController : GameTraderBaseController
     {
         // testing upload works
@@ -29,6 +32,12 @@ namespace GameTrader.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult ViewVisitorStats()
+        {
+            var stats = new VisitorStatisticsContext().VisitorStatisticRecords;
+            return View(stats);
         }
 
         public ActionResult About()

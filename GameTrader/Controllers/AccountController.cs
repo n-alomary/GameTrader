@@ -9,10 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GameTrader.Models;
+using GameTrader.DAL;
 
 namespace GameTrader.Controllers
 {
     [Authorize]
+    [TrackVisitor]
     public class AccountController : GameTraderBaseController
     {
         private ApplicationSignInManager _signInManager;

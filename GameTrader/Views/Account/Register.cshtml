@@ -15,11 +15,11 @@
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary("", new { @class = "text-danger" })
                             <div class="row">
-                                <div class="input-field col s6">
+                                <div class="input-field col m6 s12">
                                     @Html.LabelFor(m => m.FirstName)
                                     @Html.TextBoxFor(m => m.FirstName)
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col m6 s12">
                                     @Html.LabelFor(m => m.LastName)
                                     @Html.TextBoxFor(m => m.LastName)
                                 </div>
@@ -31,11 +31,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s6">
+                                <div class="input-field col m6 s12">
                                     @Html.LabelFor(m => m.Password)
                                     @Html.PasswordFor(m => m.Password)
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col m6 s12">
                                     @Html.LabelFor(m => m.ConfirmPassword)
                                     @Html.PasswordFor(m => m.ConfirmPassword)
                                 </div>

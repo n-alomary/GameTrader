@@ -9,7 +9,11 @@
     <title>@ViewBag.Title - Game Trader</title>
     @Styles.Render("~/Content/materialize/css/materialize.css")
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -19,8 +23,8 @@
         <nav class="top-nav">
             <div class="container">
                 <div class="nav-wrapper">
-                    @Html.ActionLink("Game Trader", "Index", "Home", new { area = "" }, new { @class = "brand-logo" })   
-                    <a href="#" data-activates="mobile-thing" class="button-collapse"><i class="material-icons">menu</i></a>              
+                    @Html.ActionLink("Game Trader", "Index", "Home", new { area = "" }, new { @class = "brand-logo" })
+                    <a href="#" data-activates="mobile-thing" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

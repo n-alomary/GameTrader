@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GameTrader.Models.BrowserResolution>
+
+@{
+    ViewBag.Title = "View Browser Statistics";
+}
+
+<main class="container">
+    <h5 class="center-align teal-text">Site Browser Statistics</h5>
+    <div class="row">
+        <div class=" col m12" style="width:500px;">
+            <table class="table responsive-table hoverable">
+                <tr>
+                    <th>
+                        Visitor Number
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IPAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrowserResolutionHeight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrowserResolutionWidth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Browser)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IPAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrowserResolutionHeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrowserResolutionWidth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Browser)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</main>

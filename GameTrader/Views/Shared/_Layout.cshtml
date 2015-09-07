@@ -1,55 +1,73 @@
-﻿@*@{
-        Layout = null;
-    }*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
+    <!--Render Required Scripts-->
+    @Scripts.Render("~/Scripts/jquery-2.1.1.min.js")
+    @Scripts.Render("~/Scripts/materialize/materialize.min.js")
+
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewBag.Title - Game Trader</title>
     @Styles.Render("~/Content/materialize/css/materialize.css")
+    @Styles.Render("~/Content/MyStyleSheet.css")
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-</head>
-<body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
+    <!--Script sends an ajax call to the controller with the users browser resolution
+        and enables the carousel in index and enables mobile hamburger menu -->
+    <script type="text/javascript">
         $(document).ready(function () {
-            console.log(1);
-            Alert(1);
+            $('.slider').slider({ full_width: false });
             $(".button-collapse").sideNav();
+
+            var height = $(window).width();
+            var width = $(window).height();
+            $.ajax({
+                url: "Home/Resolution",
+                data: {
+                    'Height': height,
+                    'Width': width
+                },
+                dataType: "json",
+                success: function () {
+                    console.log("Success");
+                }
+            });
         });
     </script>
+</head>
+
+<body>
     <header>
         <div class="intro teal lighten-1z-depth-1">
             <img src="img/game.png">
         </div>
         <nav>
-            @*class="top-nav">*@
             <div class="container">
-            <div class="nav-wrapper">
-                @Html.ActionLink("Game Trader", "Index", "Home", new { area = "" }, new { @class = "brand-logo" })
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul @*id="nav-mobile"*@ class="right hide-on-med-and-down">
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
-                    <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-                <ul class="side-nav" id="nav-mobile">
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
-                    <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
-                </ul>
-            </div>
+                <div class="nav-wrapper">
+                    @Html.ActionLink("Game Trader", "Index", "Home", new { area = "" }, new { @class = "brand-logo left hide-on-med-and-down" })
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul id="nav-destop" class="right hide-on-med-and-down">
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
+                        <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
+                    </ul>
+                    @* The partial render performs logic to see if the user has logged in, if they did then it displays a new links in the navbar *@
+                    @Html.Partial("_LoginPartial")
+                    <ul class="side-nav" id="nav-mobile">
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>
+                        <li>@Html.ActionLink("Sell/Swap", "SellSwap", "Home")</li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
     </header>
     <div>
+        @* Renders the approriate cshtml page with the correct content *@
         @RenderBody()
     </div>
 
@@ -57,7 +75,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m4 12">
-                    <h5 class="white-test">Footer content</h5>
+                    <h5 class="white-text">Footer content</h5>
                     <p class="grey-text text-lighten-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna ast laborum.
@@ -65,22 +83,22 @@
                 </div>
 
                 <div class="col s12 m4 18">
-                    <img src="img/Gamaderlogo.jpg" alt="GameTrader Logo">
+                    <img src="img/GameTraderlogo.jpg" alt="GameTrader Logo">
                     <h5 class="teal-text">Game Trader</h5>
-                    <ul>
-                        <li><a href="https://www.twitter.com/">Twitter</a></li>
-                        <li><a href="https://www.facebook.com/">Facebook</a></li>
-                        <li><a href="mailto:staff@gametrader.co.uk">Email</a></li>
-                        <li><a href="https://instagram.com/">Instagram</a></li>
+                    <ul class="waves-block ">
+                        <li class="mini-social-navbar"> <a href="https://www.twitter.com/" class="white-text"><img src="~/Content/glypho/png/twitter.png" alt="twitter" class="social-image" /></a></li>
+                        <li class="mini-social-navbar"><a href="https://www.facebook.com/" class="white-text"><img src="~/Content/glypho/png/facebook.png" alt="facebook" class="social-image" /></a></li>
+                        <li class="mini-social-navbar"><a href="mailto:staff@gametrader.co.uk" class="white-text"><img src="~/Content/glypho/png/email.png" alt="email" class="social-image" /> </a></li>
+                        <li class="mini-social-navbar"><a href="https://instagram.com/" class="white-text"><img src="~/Content/glypho/png/instagram.png" alt="instagram" class="social-image" /></a></li>
                     </ul>
                 </div>
 
                 <div class="col s12 m4 12 offset-8">
                     <h5 class="white-text">Services</h5>
-                    <ul>
-                        <li><a href="/Home/BuySwap">Buy</a></li>
-                        <li><a href="/Home/SellSwap">Sell</a></li>
-                        <li><a href="/Home/SellSwap">Swap</a></li>
+                    <ul class="footer-list">
+                        <li><h6><a href="/Home/BuySwap" class="black-text lighten-2">Buy</a></h6> </li>
+                        <li><h6><a href="/Home/SellSwap" class="black-text lighten-2">Sell</a></h6></li>
+                        <li><h6><a href="/Home/SellSwap" class="black-text lighten-2">Swap</a></h6></li>
                     </ul>
                 </div>
             </div>
@@ -91,8 +109,5 @@
             </div>
         </div>
     </footer>
-
-    @Scripts.Render("~/Scripts/jquery-2.1.1.min.js")
-    @Scripts.Render("~/Scripts/materialize/materialize.min.js")
 </body>
 </html>

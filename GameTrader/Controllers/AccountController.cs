@@ -78,8 +78,9 @@ namespace GameTrader.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-
+            
             var user = await UserManager.FindAsync(model.Email, model.Password);
+            
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, false, model.RememberMe);
@@ -90,6 +91,20 @@ namespace GameTrader.Controllers
                         return RedirectToAction("Index", "Admin", model);
                     }
                 }
+            }
+            else
+            {
+                FailedLoginAttempt failed = new FailedLoginAttempt()
+                {
+                    Username = model.Email,
+                    IPAddress = Request.UserHostAddress,
+                    TimeAttempted = DateTime.UtcNow,
+                    Browser = Request.Browser.ToString()
+                };
+
+                FailedLoginContext context = new FailedLoginContext();
+                context.FailedLoginAttemptRecords.Add(failed);
+                context.SaveChanges();
             }
 
             switch (result)

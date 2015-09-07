@@ -1,11 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && !(User.IsInRole("Admin") || User.IsInRole("AwesomePerson")))
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "top-nav nav-mobile right" }))
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav-mobile right">
+    <ul class="nav-desktop right">
         <li>
             @Html.ActionLink("Hello " + ViewData.GetViewDataInfo("FullName").Value + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
@@ -13,17 +13,20 @@
     </ul>
     }
 }
-else if (Request.IsAuthenticated && User.IsInRole("Admin"))
+else if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("AwesomePerson")))
 {
-    <ul class="nav-mobile right">
-        <li>@Html.ActionLink("Hello " + ViewData.GetViewDataInfo("FullName").Value + "!!!!!!!!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+    <ul class="nav-desktop right">
+        <li>@Html.ActionLink("Admin Panel", "Index", "Admin", routeValues: null, htmlAttributes: new { id = "AdminLink" })</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    <ul class="side-nav ">
         <li>@Html.ActionLink("Admin Panel", "Index", "Admin", routeValues: null, htmlAttributes: new { id = "AdminLink" })</li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
 }
 else
 {
-    <ul class="nav-mobile right">
+    <ul class="nav-desktop right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

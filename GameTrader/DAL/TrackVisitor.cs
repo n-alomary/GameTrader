@@ -17,15 +17,14 @@ namespace GameTrader.DAL
             //generate a visitor statistic record. 
             VisitorStatistic visitor = new VisitorStatistic()
             {
-                ID = Guid.NewGuid(),
                 UserName = (request.IsAuthenticated) ? filterContext.HttpContext.User.Identity.Name : "Annonymous",
                 IPAddress = request.UserHostAddress ?? request.ServerVariables["HTTP_X_FORWARDED_FOR"],
                 AlternateIPAddress = request.ServerVariables["REMOTE_ADDR"] ?? "Not Available",
                 AreaAccessed = request.RawUrl,
                 Timestamp = DateTime.UtcNow,
                 Referer = request.ServerVariables["HTTP_REFERER"] ?? "internet",
-                Browser = request.ServerVariables["HTTP_USER_AGENT"] ?? request.UserAgent,
-            };
+                Browser = request.Browser.Browser
+            }; 
             // stores the tracked info in the database 
             VisitorStatisticsContext context = new VisitorStatisticsContext();
             context.VisitorStatisticRecords.Add(visitor);

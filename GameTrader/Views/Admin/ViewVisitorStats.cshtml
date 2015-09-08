@@ -10,6 +10,7 @@
         <div class="card-panel teal">
             <span class="white-text">
                 The Total number of site visitors : @Model.ToList().Count <br />
+                The Total number of non-member visitors : @Model.ToList().FindAll(x => x.UserName == "Annonymous").Count<br />
                 The Total number of site visitors using Chrome : @Model.ToList().FindAll(x => x.Browser == "Chrome").Count<br />
                 The Total number of site visitors using Internet Explorer : @Model.ToList().FindAll(x => x.Browser == "Internet Explorer").Count<br />
                 The Total number of site visitors using Opera : @Model.ToList().FindAll(x => x.Browser == "Opera").Count<br />

@@ -18,6 +18,7 @@ namespace GameTrader.Controllers
 
         public ActionResult Resolution(int height, int width)
         {
+            // collecting and storing the browser and resolution
             BrowserResolution record = new BrowserResolution()
             {
                 BrowserResolutionHeight = height.ToString(),
@@ -30,7 +31,7 @@ namespace GameTrader.Controllers
             VisitorStatisticsContext context = new VisitorStatisticsContext();
             context.BrowserResolutionRecord.Add(record);
             context.SaveChanges();
-            
+
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 

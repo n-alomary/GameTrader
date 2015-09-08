@@ -298,7 +298,6 @@
     <Content Include="Views\Home\BuySwap.cshtml" />
     <Content Include="Views\Admin\ViewVisitorStats.cshtml" />
     <Content Include="Views\Admin\Upload.cshtml" />
-    <Content Include="Views\Admin\UploadEditFile.cshtml" />
     <Content Include="Views\Admin\EditFile.cshtml" />
     <Content Include="Views\Admin\ViewBrowserStats.cshtml" />
   </ItemGroup>

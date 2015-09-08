@@ -1,13 +1,11 @@
-﻿
-
-<main class="container">
+﻿<main class="container">
     <h4 class="center-align teal-text">Edit File</h4>
-    <form action="Admin/EditFile" method="post">
+    <form action="EditFile" method="post" >
         <div class="row">
             <div class="input-field s12">
-                <textarea id="message_text" class="materialize-textarea">@ViewBag.Message</textarea>
-                <label for="message_text">Message Text</label>
-                @Html.ActionLink("Save Changes", "EditFile")
+                @Html.TextArea("editedText", ViewData["FileTextToEdit"].ToString(), new { @class = "materialize-textarea", @name= "editedText" })
+                <label for="editedText">Message Text</label>
+                <input type="submit" name="name" class="btn" value="Save Changes " />
             </div>
         </div>
     </form>

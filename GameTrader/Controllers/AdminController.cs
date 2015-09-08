@@ -46,43 +46,32 @@ namespace GameTrader.Controllers
             return View(stats);
         }
 
-
         [HttpGet]
-        public ActionResult UploadEditFilepage()
-        {
-            return View("UploadEditFile");
-        }
-
-        [HttpPost]
-        public ActionResult UploadEditFile()
-        {
-            HttpPostedFileBase uploadedTextFile = Request.Files["textFile"];
-
-            if (uploadedTextFile != null && uploadedTextFile.ContentLength > 0)
-            {
-                // var fileName = Path.GetFileName(photo.FileName);
-                uploadedTextFile.SaveAs(Path.Combine(directory, "EditedFile.txt"));
-            }
-            using (StreamReader reader = new StreamReader(Path.Combine(directory, "EditedFile.txt")))
-            {
-                ViewBag.Message = reader.ReadToEnd();
-            }
-            return RedirectToAction("EditFile", ViewBag);
-        }
-
         public ActionResult EditFile()
         {
-            return View();
+            try
+            {
+                using (StreamReader reader = new StreamReader(Path.Combine(directory, "AboutPageText.txt")))
+                {
+                     ViewData["FileTextToEdit"] = reader.ReadToEnd();
+                }
+            }
+            catch (System.Exception ex) 
+            {
+                var logger = new LoggerConfiguration().WriteTo.File(@"C:\Users\Nour\Downloads\myapplog.txt", Serilog.Events.LogEventLevel.Error).CreateLogger();
+                logger.Error(ex.Message, "cannot read file");
+            }
+            return View("EditFile",ViewBag);
         }
 
         [HttpPost]
-        public ActionResult EditFile(string file)
+        public ActionResult EditFile(string editedText)
         {
             try
             {
                 using (StreamWriter writer = new StreamWriter(Path.Combine(directory, "AboutPageText.txt")))
                 {
-                    writer.Write(ViewBag.Message);
+                    writer.Write(editedText);
                 }
             }
             catch (System.Exception ex)

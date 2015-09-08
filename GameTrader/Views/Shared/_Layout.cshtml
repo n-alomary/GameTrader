@@ -56,6 +56,7 @@
                     @* The partial render performs logic to see if the user has logged in, if they did then it displays a new links in the navbar *@
                     @Html.Partial("_LoginPartial")
                     <ul class="side-nav" id="nav-mobile">
+                        <li>@Html.ActionLink("Game Trader", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Buy", "BuySwap", "Home")</li>

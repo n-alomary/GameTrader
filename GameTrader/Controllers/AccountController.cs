@@ -9,10 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GameTrader.Models;
+using GameTrader.DAL;
 
 namespace GameTrader.Controllers
 {
     [Authorize]
+    [TrackVisitor]
     public class AccountController : GameTraderBaseController
     {
         private ApplicationSignInManager _signInManager;
@@ -22,7 +24,7 @@ namespace GameTrader.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +36,9 @@ namespace GameTrader.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -72,28 +74,28 @@ namespace GameTrader.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
 
+            // this is used to find the user role- if any so that they can be directed to the correct page
             var user = await UserManager.FindAsync(model.Email, model.Password);
+
+            // if the user exists then checks if they are in a particular role such as admin, if they are they are directed to the correct admin view 
+            // otherwise the authenticated user is directed to the site as the authenticated user.
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, false, model.RememberMe);
                 if (string.IsNullOrEmpty(returnUrl))
                 {
-                    if (UserManager.IsInRole(user.Id, "Admin") ||   UserManager.IsInRole(user.Id, "AwesomePerson"))
+                    if (UserManager.IsInRole(user.Id, "Admin") || UserManager.IsInRole(user.Id, "AwesomePerson"))
                     {
                         return RedirectToAction("Index", "Admin", model);
                     }
                 }
             }
-
+            // checks the account status, if the user is correctly authenticated then they are logged i, otherwise error messages will show depending on the issue
             switch (result)
             {
                 case SignInStatus.Success:
-                    
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -135,7 +137,7 @@ namespace GameTrader.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,18 +168,13 @@ namespace GameTrader.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
+                // create a new user object which is going to be passed onto the appropriate method.
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    // once the user is registered they are then automaticaly logged in
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -382,8 +379,12 @@ namespace GameTrader.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName
-                    = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName
+                    = model.Email,
+                    Email = model.Email
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

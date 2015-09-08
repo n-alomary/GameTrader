@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Upload File";
+}
+
+<main class="container">
+    <h4 class="center-align teal-text">@ViewBag.Title</h4>
+    <div class="row">
+        <form action="/Admin/UploadFile" method="post" enctype="multipart/form-data">
+            <label for="textFile">File To Upload:  </label>
+            <input class="file-path btn" type="file" name="textFile" id="textFile" />
+            <input class="btn" type="submit" value="Upload File" />
+        </form>
+    </div>
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+</main>

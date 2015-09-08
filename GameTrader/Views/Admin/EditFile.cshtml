@@ -1,0 +1,12 @@
+﻿<main class="container">
+    <h4 class="center-align teal-text">Edit File</h4>
+    <form action="EditFile" method="post" >
+        <div class="row">
+            <div class="input-field s12">
+                @Html.TextArea("editedText", ViewData["FileTextToEdit"].ToString(), new { @class = "materialize-textarea", @name= "editedText" })
+                <label for="editedText">Message Text</label>
+                <input type="submit" name="name" class="btn" value="Save Changes " />
+            </div>
+        </div>
+    </form>
+</main>

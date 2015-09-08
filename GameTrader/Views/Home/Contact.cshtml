@@ -1,11 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact Us";
 }
-
-
 <main class="container">
     <div class="row col s12">
-        <h4 class="center-align teal-text">Contact Us</h4>
+        <h4 class="center-align teal-text">@ViewBag.Title</h4>
     </div>
     <div class="row">
         <div class="col s12 m4 ">
@@ -22,47 +20,37 @@
                     <address>
                         <strong>Support:</strong>  <a href="mailto:Support@example.com"><span class="deep-purple-text">Support@example.com</span></a><br />
                         <strong>Marketing:</strong> <a href="mailto:Marketing@example.com"><span class="deep-purple-text">Marketing@example.com</span></a>
-</address>
+                    </address>
                 </div>
             </div>
-
         </div>
-    <div class=" col s12 m7">
-        <div class="input-field s12">
-            <i class="material-icons prefix">account_circle</i>
-            <input id="customer_name" type="text" />
-            <label for="customer_name">Customer Name</label>
-        </div>
-
-        <div class="input-field s12">
-            <i class="material-icons prefix">email</i>
-            <input id="email" type="email" />
-            <label for="email">Email</label>
-        </div>
-
-        <div class="input-field s12">
-            <i class="material-icons prefix">chat_bubble</i>
-            <input id="email_subject" type="text" />
-            <label for="email_subject">Subject</label>
-        </div>
-
-        <div class="input-field s12">
-            <textarea id="message_text" class="materialize-textarea"></textarea>
-            <label for="message_text">Message Text</label>
-        </div>
-
-        <div class="input-field s12">
-            <div class="center-align">
-                <button name="Submit" value="Login" class="btn waves-effect waves-light" type="submit">
-                    Submit
-                </button>
+        <div class=" col s12 m7">
+            <div class="input-field s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="customer_name" type="text" />
+                <label for="customer_name">Customer Name</label>
+            </div>
+            <div class="input-field s12">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" />
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field s12">
+                <i class="material-icons prefix">chat_bubble</i>
+                <input id="email_subject" type="text" />
+                <label for="email_subject">Subject</label>
+            </div>
+            <div class="input-field s12">
+                <textarea id="message_text" class="materialize-textarea"></textarea>
+                <label for="message_text">Message Text</label>
+            </div>
+            <div class="input-field s12">
+                <div class="center-align">
+                    <button name="Submit" value="Login" class="btn waves-effect waves-light" type="submit">
+                        Submit
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
 </main>
-
-
-
-
-

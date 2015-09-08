@@ -1,0 +1,32 @@
+﻿.justify-text 
+{
+    text-align: justify;
+}
+
+.mini-social-navbar
+{
+    display: inline;
+
+}
+
+.social-image
+{
+    width:15%;
+
+}
+
+.footer-list li h6 
+{
+    padding:20px;
+}
+
+.footer-list li h6 
+{
+    text-align:center;
+}
+
+li h6:hover
+{
+    background-color:teal;
+    color:white;
+}
